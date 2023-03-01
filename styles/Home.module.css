@@ -127,8 +127,3 @@
     filter: invert(1);
   }
 }
-
-.login-image {
-  /* background-image: url("../public/assets/undraw_my_password_re_ydq7.svg"); */
-  background-color: red;
-}

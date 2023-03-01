@@ -1,4 +1,4 @@
-import { useSession, signIn, signOut } from "next-auth/react";
+import { useSession, signIn, getSession } from "next-auth/react";
 import Image from "next/image";
 import LoginImage from "../public/assets/undraw_my_password_re_ydq7.svg";
 import google from "../public/assets/google.webp";
@@ -50,17 +50,17 @@ const Login = () => {
             <p className="text-center text-gray-400 text-sm">Or login with</p>
             <div className="flex mb-10">
               <button
-                className="flex items-center justify-center gap-5 p-3 mt-5 rounded-md text-gray-400 text-sm border-2 border-red-200"
+                className="flex items-center justify-center gap-3 p-3 mt-5 rounded-md text-gray-400 text-sm border-2 border-red-200"
                 onClick={() => signIn()}
               >
-                <Image src={google} width={25} height={25} />
+                <Image src={google} width={25} height={25} alt="Google logo" />
                 <span className="text-red-400">Login with Google</span>
               </button>
             </div>
           </div>
         </form>
         <div className="bg-red-100 rounded-full">
-          <Image src={LoginImage} width={600} height={600} />
+          <Image src={LoginImage} width={600} height={600} alt="Sign-in" />
         </div>
       </section>
     </main>
@@ -68,3 +68,20 @@ const Login = () => {
 };
 
 export default Login;
+
+export const getServerSideProps = async (context) => {
+  const session = await getSession(context);
+  if (session) {
+    return {
+      redirect: {
+        destination: "/",
+      },
+    };
+  }
+
+  return {
+    props: {
+      session,
+    },
+  };
+};
