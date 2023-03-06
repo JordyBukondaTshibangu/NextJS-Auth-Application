@@ -2,9 +2,7 @@ import { useSession, signIn, getSession } from "next-auth/react";
 import Image from "next/image";
 import LoginImage from "../public/assets/undraw_my_password_re_ydq7.svg";
 import google from "../public/assets/google.webp";
-import twitter from "../public/assets/twitter.webp";
-import facebook from "../public/assets/facebook.png";
-import linkedIn from "../public/assets/linkedIn.png";
+import emailLogo from "../public/assets/email.png";
 import { useState } from "react";
 import { useRouter } from "next/router";
 
@@ -78,7 +76,7 @@ const Login = () => {
 
             <div className="flex flex-col gap-2 pb-10">
               <button
-                className="w-full flex items-center justify-center gap-1 p-3 rounded-md text-gray-400 hover:text-white text-xs border-2 border-red-300 hover:bg-red-300"
+                className="w-full flex items-center justify-center gap-5 p-3 rounded-md text-gray-400 hover:text-white text-xs border-2 border-red-300 hover:bg-red-300"
                 onClick={() => signIn()}
               >
                 <Image src={google} width={20} height={20} alt="Google logo" />
@@ -88,9 +86,15 @@ const Login = () => {
               </button>
 
               <button
-                className="w-full flex items-center justify-center gap-3 p-3 rounded-md text-gray-400 text-xs border-2 border-blue-400"
+                className="w-full flex items-center justify-center gap-5 p-3 rounded-md text-gray-400 text-xs border-2 border-blue-400"
                 onClick={() => signIn()}
               >
+                <Image
+                  src={emailLogo}
+                  width={20}
+                  height={20}
+                  alt="Google logo"
+                />
                 <span className="min-w-max text-blue-400">
                   Login with Email
                 </span>
