@@ -77,62 +77,24 @@ const Login = () => {
             <p className="text-center text-gray-400 text-sm">Or login with</p>
 
             <div className="flex flex-col gap-2 pb-10">
-              <div className="flex justify-center gap-2">
-                <button
-                  className="w-full flex items-center justify-center gap-3 p-3 rounded-md text-gray-400 hover:text-white text-xs border-2 border-red-300 hover:bg-red-300"
-                  onClick={() => signIn()}
-                >
-                  <Image
-                    src={google}
-                    width={20}
-                    height={20}
-                    alt="Google logo"
-                  />
-                  <span className="text-red-400 hover:text-white">
-                    Login with Google
-                  </span>
-                </button>
-                <button
-                  className="w-full flex items-center justify-center gap-1 p-3 rounded-md text-gray-400 hover:text-white text-xs border-2 border-blue-400 hover:bg-blue-400"
-                  onClick={() => signIn()}
-                >
-                  <Image
-                    src={facebook}
-                    width={20}
-                    height={20}
-                    alt="facebook logo"
-                  />
-                  <span className="text-blue-400 hover:text-white">
-                    Login with Facebook
-                  </span>
-                </button>
-              </div>
-              <div className="flex justify-center gap-2">
-                <button
-                  className="w-full flex items-center justify-center gap-3 p-3 rounded-md text-gray-400 text-xs border-2 border-[#0072b1]"
-                  onClick={() => signIn()}
-                >
-                  <Image
-                    src={linkedIn}
-                    width={20}
-                    height={20}
-                    alt="linkedIn logo"
-                  />
-                  <span className="text-[#0072b1] ">Login with Linked</span>
-                </button>
-                <button
-                  className="w-full flex items-center justify-center gap-3 p-3 rounded-md text-gray-400 text-xs border-2 border-blue-400"
-                  onClick={() => signIn()}
-                >
-                  <Image
-                    src={twitter}
-                    width={20}
-                    height={20}
-                    alt="twitter logo"
-                  />
-                  <span className="text-blue-400">Login with Google</span>
-                </button>
-              </div>
+              <button
+                className="w-full flex items-center justify-center gap-1 p-3 rounded-md text-gray-400 hover:text-white text-xs border-2 border-red-300 hover:bg-red-300"
+                onClick={() => signIn()}
+              >
+                <Image src={google} width={20} height={20} alt="Google logo" />
+                <span className="min-w-max text-red-400 hover:text-white">
+                  Login with Google
+                </span>
+              </button>
+
+              <button
+                className="w-full flex items-center justify-center gap-3 p-3 rounded-md text-gray-400 text-xs border-2 border-blue-400"
+                onClick={() => signIn()}
+              >
+                <span className="min-w-max text-blue-400">
+                  Login with Email
+                </span>
+              </button>
             </div>
           </div>
         </form>

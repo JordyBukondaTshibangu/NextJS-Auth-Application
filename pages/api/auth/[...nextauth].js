@@ -1,7 +1,7 @@
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
-import FacebookProvider from "next-auth/providers/facebook";
+// import EmailProvider from "next-auth/providers/email";
 
 export const authOptions = {
   providers: [
@@ -13,6 +13,9 @@ export const authOptions = {
       },
       async authorize(credentials, req) {
         const { username, password } = credentials;
+        if (!username) {
+          return null;
+        }
         // const res = await fetch("http://localhost:8080/auth/login", {
         //   method: "POST",
         //   headers: {
@@ -45,17 +48,21 @@ export const authOptions = {
       clientId: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     }),
-    // FacebookProvider({
-    //   clientId: process.env.FACEBOOK_CLIENT_ID,
-    //   clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
+    // EmailProvider({
+    //   server: {
+    //     host: process.env.EMAIL_SERVER_HOST,
+    //     port: process.env.EMAIL_SERVER_PORT,
+    //     auth: {
+    //       user: process.env.EMAIL_SERVER_USER,
+    //       pass: process.env.EMAIL_SERVER_PASSWORD,
+    //     },
+    //   },
+    //   from: process.env.EMAIL_FROM,
     // }),
   ],
   secret: process.env.JWT_SECRET,
   session: {
     strategy: "jwt",
-  },
-  pages: {
-    // signIn: "/login",
   },
 };
 

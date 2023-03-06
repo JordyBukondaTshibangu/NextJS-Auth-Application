@@ -1,8 +1,13 @@
 import Link from "next/link";
 import { getSession, signIn, signOut, useSession } from "next-auth/react";
+import { useRouter } from "next/router";
 
 const NavBar = () => {
   const { data: session } = useSession();
+
+  const { push, asPath } = useRouter();
+
+  const handleLogin = () => push(`/login?callbackUrl=${asPath}`);
 
   return (
     <header className="hidden sm:flex bg-black h-[120px]  items-center justify-between px-20 py-10 w-full fixed z-10 shadow-sm">
@@ -22,14 +27,14 @@ const NavBar = () => {
         {session ? (
           <button
             className="bg-[#63FFB9] flex items-center justify-center rounded-md text-white text-lg px-5 py-2"
-            onClick={() => signOut()}
+            onClick={() => signOut({ redirect: false })}
           >
             Logout
           </button>
         ) : (
           <button
             className="bg-[#63FFB9] flex items-center justify-center rounded-md text-white text-lg px-5 py-2"
-            onClick={() => signIn()}
+            onClick={() => handleLogin()}
           >
             Login
           </button>
